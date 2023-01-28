@@ -1,25 +1,22 @@
-
 import './App.css';
-import{Route,Routes,BrowserRouter} from 'react-router-dom'
-import Navbar from'./componentes/Navbar';
-import Inicio from './paginas/inicio';
-import Gaseosas from './paginas/Gaseosas';
-import JugosNaturales from './paginas/JugosNaturales';
-import pulpa from './paginas/pulpa';
+import ItemListContainer from './components/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import NavBar from './components/NavBar/NavBar';
+import { BrowserRouter,Routes, Route } from 'react-router-dom';
 
 function App() {
+
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Navbar/>
-        <Routes>
-          <Route path='/inicio' element={<Inicio/>}/>
-          <Route path='/Gaseosas' element={<Gaseosas/>}/>
-          <Route path='/JugosNaturales' element={<JugosNaturales/>}/>
-          <Route path='/pulpa'element={<pulpa/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+    <NavBar/>
+    <Routes>
+      <Route path='/' element={<ItemListContainer/>}/>
+      <Route path='/Categoria/:categoriaId' element={<ItemListContainer/>}/>
+      <Route path='/Contacto' element={<ItemListContainer/>}/>
+      <Route path='/detalle/:detalleId' element={<ItemDetailContainer/>}/>
+    </Routes>
+    </BrowserRouter>
+    
   );
 }
 
